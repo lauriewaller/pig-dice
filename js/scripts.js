@@ -1,12 +1,12 @@
 //BUSINESS LOGIC
 
-function Scores(playerOneGlobalScore, playerTwoGlobalScore, turnScore) {
-  this.playerOneGlobalScore = playerOneGlobalScore;
-  this.playerTwoGlobalScore = playerTwoGlobalScore;
-  this.turnScore = turnScore;
+function Scores() {
+  this.playerOneGlobalScore = 0;
+  this.playerTwoGlobalScore = 0;
+  this.turnScore = 0;
 };
-
-let gameScores = new Scores(0, 0, 0);
+//move this inside doc.ready function
+let gameScores = new Scores();
 
 // Scores.prototype.hold = function
 
@@ -14,63 +14,85 @@ let gameScores = new Scores(0, 0, 0);
 //   this.turnScore = 0;
 // 
 
-Scores.prototype.diceRoll = function() {
+Scores.prototype.diceNumber = function() {
   let roll = Math.floor(Math.random() * 6) + 1;
-  
-  alert(this.turnScore);
-  //$("p").text(roll);
-  //this.turnScore += roll;
-  this.turnScore += roll;
-  return this.turnScore;
-  
+  return this.turnScore += roll;
 };
+
+//UI LOGIC
+$(document).ready(function() {
+  
+  $(".roll").click(function () {
+    gameScores.diceNumber()});
+  //$(".hold").click(gameScores.diceNumber());
+  
+
+  });
+
+
+
+
+
+
+
+
+
+/*
+Scores.prototype.roll = function() {
+  let diceNumber = this.diceNumber;
+  if (diceNumber === 1) {
+  this.turnScore = 0;
+  //switch player
+} else {
+  let roll = this.turnScore;
+  this.turnScore += diceNumber;
+  this.turnScore = roll;
+};
+
+alert(this.turnScore);
+//$("p").text(roll);
+//this.turnScore += roll;
+}
+
+Scores.prototype.hold = function() {
+  this.playerOneGlobalScore = this.turnScore;
+  this.turnScore = 0;
+  // switch player
+}
+
+    // If score === 100 return "You win!"
+    // else add number to player total.
 
 
 // hold(): add player round score to global score, return round score to zero, switch player
 // rollOne(): return round score to zero, switch player
 
-/* function Contact(firstName, lastName, phoneNumber) {
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.phoneNumber = phoneNumber;
-}
+*/
 
-Contact.prototype.fullName = function() {
-  return this.firstName + " " + this.lastName;
-}
-*/ 
-//UI LOGIC
-$(document).ready(function() {
-  
-  $(".roll").click(gameScores.diceRoll);
-  $(".hold").click(gameScores.diceRoll);
-  
 
-  //UI logic
-// if/else 
-    // If a player chooses to "hold", their round total is added to their global score
-    // it becomes the next player's turn.
-    // roll a 1 === return 0 
-      //it becomes the next player's turn.
-    // If score === 100 return "You win!"
-    // else add number to player total. 
-  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 /*  
-Create a new protoype:
 
-Dog.prototype.speak = function() {
-  console.log("Woof!");
-}
-
-Dog.prototype.humanYears = function() {
-  return this.age * 7;
-}
 Call prototype:
 > myPuppy.speak();
-
 
 // Co-authored-by: Nick Hennessy <njhnny@gmail.com>"
 

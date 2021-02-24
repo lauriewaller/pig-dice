@@ -34,17 +34,16 @@ Scores.prototype.hold = function() {
 
 Scores.prototype.roll = function() {
   let roll = this.diceNumber();
-  console.log(roll);
   if (roll === 1) {
   this.turnScore = 0;
   this.changePlayer();
   } else {
   return this.turnScore += roll;
   }
-  console.log(gameScores)
 };
-
-
+//separate out "you win" functionality into separate prototype?
+//else if (this.playerOneGlobalScore && this.playerOneGlobalScore + this.turnScore >= 100) {
+//  return "You win!";
 //UI LOGIC
 $(document).ready(function() {
   
@@ -61,3 +60,43 @@ $(document).ready(function() {
 });
 
 
+/*
+// hold(): add player round score to global score, return round score to zero, switch player
+// rollOne(): return round score to zero, switch player
+
+alert(this.turnScore);
+//$("p").text(roll);
+//this.turnScore += roll;
+}
+*/
+
+
+
+
+// rollOne(): return round score to zero, switch player
+
+    // If score === 100 return "You win!"
+    // else add number to player total.
+
+
+//Call prototype:
+//> myPuppy.speak();
+
+
+// Co-authored-by: Nick Hennessy <njhnny@gmail.com>"
+
+//Business logic:
+//one round object
+//create constructor for objects: two global objects (one for each player)
+// rollDice function: need a dice method to roll 1-6
+
+
+
+//------------------------------------
+// Player can play multiple rounds in a row, or choose to hold. 
+
+    //Questions: 
+// Is it possible to mandate player turn? or provide a hold button to 
+//total player score and return a message for next player turn.
+
+// let dice = Math.floor(Math.random() * 6) + 1
